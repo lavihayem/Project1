@@ -1,3 +1,4 @@
+// Name   shafieollah lavihayem
 import java.util.*;
 
 class ReversedWord<T> implements Iterable<T>
