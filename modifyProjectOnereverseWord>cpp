@@ -1,0 +1,46 @@
+// this reverse word project
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+
+string reverse(const string& word){
+	istringstream buffer(word);
+	string wrd, reversed;
+	vector<string> temp;
+	int numword = 0;
+	while (buffer>>wrd){
+		temp.push_back(wrd);
+		numword++;
+	}
+	for(int i=numword-1; i>=0; i--){
+		reversed += temp[i];
+		reversed += " ";
+	}
+	return reversed;
+}
+
+int main(){
+	ifstream infile("B-small-practice.in");
+	ofstream outfile("Words_Reversed.out");
+	if(!infile)
+		cout<<"no input file"<<endl;
+	if(!outfile)
+		cout<<"no output file"<<endl;
+	int a = 1;
+	string words;
+	int numcase;
+	infile>>numcase;
+	getline(infile, words);
+	while(getline(infile,words)){
+		string wordsReverse = reverse(words);
+		outfile<<"Case # "<<a<<": "<<wordsReverse<<endl;
+		a++;
+	}
+	infile.close();
+	outfile.close();
+}
